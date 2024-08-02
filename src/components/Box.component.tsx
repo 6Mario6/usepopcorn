@@ -1,7 +1,7 @@
 import { ReactNode, useState } from "react";
 
 // Stateful component
-export const ListBox = ({ children }: { children: ReactNode }) => {
+export const Box = ({ children }: { children: ReactNode }) => {
   const [isOpen1, setIsOpen1] = useState(true);
 
   return (

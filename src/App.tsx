@@ -3,9 +3,11 @@ import { Main } from "./components/Main.component";
 import { NavBar } from "./components/NavBar.component";
 import { NumResults } from "./components/NumResults.component";
 import { Search } from "./components/Search.component";
-import { ListBox } from "./components/ListBox.component";
-import { WatchedBox } from "./components/WatchedBox.component";
+import { Box } from "./components/Box.component";
 import { MovieList } from "./components/MovieList.component";
+import { WatchedMoviesSummary } from "./components/WatchedMoviesSummary.component";
+import { WatchedMoviesList } from "./components/WatchedMoviesList.component";
+import { StartRating } from "./components/StarRaiting";
 const tempMovieData = [
   {
     imdbID: "tt1375666",
@@ -29,19 +31,46 @@ const tempMovieData = [
       "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg",
   },
 ];
+const tempWatchedData = [
+  {
+    imdbID: "tt1375666",
+    Title: "Inception",
+    Year: "2010",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+    runtime: 148,
+    imdbRating: 8.8,
+    userRating: 10,
+  },
+  {
+    imdbID: "tt0088763",
+    Title: "Back to the Future",
+    Year: "1985",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    runtime: 116,
+    imdbRating: 8.5,
+    userRating: 9,
+  },
+];
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState(tempWatchedData);
   return (
     <>
+      <StartRating />
       <NavBar>
         <Search />
         <NumResults movies={movies} />
       </NavBar>
       <Main>
-        <ListBox>
+        <Box>
           <MovieList movies={movies} />
-        </ListBox>
-        <WatchedBox />
+        </Box>
+        <Box>
+          <WatchedMoviesSummary watched={watched} />
+          <WatchedMoviesList watched={watched} />
+        </Box>
       </Main>
     </>
   );
