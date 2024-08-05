@@ -58,7 +58,7 @@ export default function App() {
   const [watched, setWatched] = useState(tempWatchedData);
   return (
     <>
-      <StartRating />
+      <StartRating messages={["Terrible", "Bad", "Okay", "Good", "Amazing"]} />
       <NavBar>
         <Search />
         <NumResults movies={movies} />
